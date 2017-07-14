@@ -23,6 +23,7 @@
 #define ftello64 ftell
 
 #include "lib/miniz.c"
+#include "lib/microtar/microtar.h"
 
 #include "fs.h"
 
