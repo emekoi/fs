@@ -23,7 +23,7 @@
 #define ftello64 ftell
 
 #include "lib/miniz.c"
-#include "lib/microtar/microtar.h"
+#include "microtar/microtar.h"
 
 #include "fs.h"
 
@@ -35,7 +35,8 @@
 typedef struct PathNode {
   struct PathNode *next;
   int type;
-  mz_zip_archive zip;
+  mtar_t tar;
+  mtar_header_t header;
   char path[1];
 } PathNode;
 
@@ -44,7 +45,7 @@ static PathNode *writePath;
 
 enum {
   PATH_TDIR,
-  PATH_TZIP
+  PATH_TTAR
 };
 
 
@@ -126,8 +127,9 @@ static PathNode *newNode(const char *path) {
   if (isDir(path)) {
     p->type = PATH_TDIR;
   } else {
-    p->type = PATH_TZIP;
+    p->type = PATH_TTAR;
     res = mz_zip_reader_init_file(&p->zip, path, 0);
+    res = mtar_open(&p->tar, )
     assert(res);
   }
   return p;
