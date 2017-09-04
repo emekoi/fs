@@ -186,9 +186,12 @@ int mtar_open(mtar_t *tar, const char *filename, const char *mode) {
   tar->close = file_close;
 
   /* Assure mode is always binary */
-  if ( strchr(mode, 'r') ) mode = "rb";
-  if ( strchr(mode, 'w') ) mode = "wb";
-  if ( strchr(mode, 'a') ) mode = "ab";
+  if ( !strcmp(mode, "r") ) mode = "rb";
+  if ( !strcmp(mode, "w") ) mode = "wb";
+  if ( !strcmp(mode, "a") ) mode = "ab";
+  if ( !strcmp(mode, "r+") ) mode = "rb+";
+  if ( !strcmp(mode, "w+") ) mode = "wb+";
+  if ( !strcmp(mode, "a+") ) mode = "ab+";
   /* Open file */
   tar->stream = fopen(filename, mode);
   if (!tar->stream) {

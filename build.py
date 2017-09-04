@@ -6,9 +6,9 @@ COMPILER = "gcc"
 INCLUDE = [  ]
 SOURCE = [
   "src/*.c",
-  "src/lib/microtar/*.c",
+  "src/microtar/*.c",
 ]
-FLAGS = [ "-Wall", "-Wextra", "--std=c99", "-fno-strict-aliasing" ]
+FLAGS = [ "-Wall", "-Wextra", "--std=c99", "-fno-strict-aliasing", "-pedantic" ]
 LINK = [ "m" ]
 DEFINE = [ ]
 EXTRA = ""

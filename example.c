@@ -10,7 +10,7 @@ int main(int argc, char **argv) {
   char *p;
 
   /* Open archive for reading */
-  mtar_open(&tar, argv[1], "r");
+  mtar_open(&tar, argv[1], "r+");
 
   /* Print all file names and sizes */
   while ( (mtar_read_header(&tar, &h)) != MTAR_ENULLRECORD ) {
