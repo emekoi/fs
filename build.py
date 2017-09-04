@@ -1,7 +1,7 @@
 #!/usr/bin/python2.7
 import os, sys, shutil, platform, time
 
-OUTPUT = "bin/fs"
+OUTPUT = "bin/fsx"
 COMPILER = "gcc"
 INCLUDE = [  ]
 SOURCE = [
@@ -51,6 +51,7 @@ def main():
   print "building (" + build + ")..."
 
   # Create directories
+  os.system("rm " + OUTPUT)
   outdir = os.path.dirname(OUTPUT)
   if not os.path.exists(outdir):
     os.makedirs(outdir)
