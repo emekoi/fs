@@ -1,11 +1,12 @@
 #!/usr/bin/python2.7
 import os, sys, shutil, platform, time
 
-OUTPUT = "bin/fsx"
+OUTPUT = "bin/list"
 COMPILER = "gcc"
 INCLUDE = [  ]
 SOURCE = [
   "src/*.c",
+  "src/map/*.c",
   "src/microtar/*.c",
 ]
 FLAGS = [ "-Wall", "-Wextra", "--std=c99", "-fno-strict-aliasing", "-pedantic" ]
@@ -51,7 +52,8 @@ def main():
   print "building (" + build + ")..."
 
   # Create directories
-  os.system("rm " + OUTPUT)
+  if os.path.isfile(OUTPUT):
+    os.system("rm " + OUTPUT)
   outdir = os.path.dirname(OUTPUT)
   if not os.path.exists(outdir):
     os.makedirs(outdir)
@@ -77,7 +79,7 @@ def main():
   print "compiling..."
   res = os.system(cmd)
 
-  if build == "release":
+  if build == "release" and os.path.isfile(OUTPUT):
     print "stripping..."
     os.system("strip %s" % OUTPUT)
 
