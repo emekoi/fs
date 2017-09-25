@@ -22,7 +22,7 @@
 #define fseeko64 fseek
 #define ftello64 ftell
 
-#include "lib/miniz.c"
+#include "miniz.c"
 
 #include "fs.h"
 

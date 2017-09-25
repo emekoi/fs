@@ -60,7 +60,7 @@ void list_dir(fs_FileListNode *list, char *root, unsigned_map_t *files) {
   }
 }
 
-void wait(double n) {
+void _wait(double n) {
   clock_t target = clock() / CLOCKS_PER_SEC + n;
   while (clock() / CLOCKS_PER_SEC != target);
 }
@@ -89,7 +89,7 @@ int main(int argc, const char **argv) {
   map_init(&filemap);
   while (1) {
     list_dir(list, (char *)argv[1], &filemap);
-    wait(interval);
+    _wait(interval);
   }
 
   return 0;

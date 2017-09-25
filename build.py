@@ -1,13 +1,13 @@
 #!/usr/bin/python2.7
 import os, sys, shutil, platform, time
 
-OUTPUT = "bin/list"
+OUTPUT = "bin/test"
 COMPILER = "gcc"
 INCLUDE = [  ]
 SOURCE = [
-  "src/*.c",
-  "src/map/*.c",
-  "src/microtar/*.c",
+  "src/test.c",
+  "src/fs/fs.c",
+  # "src/map/*.c",
 ]
 FLAGS = [ "-Wall", "-Wextra", "--std=c99", "-fno-strict-aliasing", "-pedantic" ]
 LINK = [ "m" ]
